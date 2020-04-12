@@ -1,0 +1,37 @@
+# count primes
+# v0 - non-working version
+# v1 - added functionality to print progess and also return the list of primes found
+# v2 - made print functionality optional and made other small improvements  
+
+def countPrimes(size):
+    prime = 0
+    global primeList
+    primeList = []
+    for num in range(2,size+1):
+        for i in range(2,num):
+            if num % i == 0:
+                if pr == 'y':
+                    print(f'    {num} is not prime...')
+                    print(f'    {i} goes into {num} {num//i} times with no remainder.')
+                break
+        else: # this is a for-else loop (uncommon), rather than an if-else loop (more common) 
+            if pr == 'y':
+                print(f'\n{num} is prime...')
+            prime = prime + 1
+            if pr == 'y':
+                print(f'{prime} prime numbers so far...')
+            primeList.append(num)
+            if pr == 'y':
+                print(f'{primeList}\n')
+    return prime
+
+print('\nFIND PRIMES - by Jason R. Carroll\n')
+print("I'll find all the prime numbers in the range you specify.")
+size = int(input('How far should I look (enter a maximum number)? '))
+pr = input("\nI can print calculations as I go, but it slows things down significanly.\nShould I print as I go? Y/N? ")
+pr = pr.lower()
+result = countPrimes(size)
+print(f'\nLooks like there are {result} prime numbers between 1 and {size}...here they are:\n')
+print(primeList)
+print('\nHave a nice day.')
+input('\nPress [Enter] to quit... ')
